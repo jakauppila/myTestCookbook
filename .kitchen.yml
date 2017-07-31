@@ -13,14 +13,12 @@ verifier:
   name: inspec
 
 platforms:
-  - name: ubuntu-16.04
   - name: centos-7.2
+    provisioner:
+      require_chef_omnibus: 12.21.3
 
 suites:
   - name: default
     run_list:
-      - recipe[myTestCookbook::default]
-    verifier:
-      inspec_tests:
-        - test/smoke/default
+      - recipe[test::default_value]
     attributes:
